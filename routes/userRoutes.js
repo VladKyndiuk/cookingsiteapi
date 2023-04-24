@@ -4,10 +4,11 @@ const router = new Router();
 const personController = require("../controller/personController");
 
 // GET
-// router.get("/persons", personController.getAllPersons);
-router.get("/person/:id", personController.getOnePerson);
+router.get("/persons", personController.getAllPersons);
 
 
+
+router.post("/authorize", personController.authorize);
 router.post("/create_person", personController.createPerson);
 // router.post("/delete_person/:id", personController.deletePerson);
 
