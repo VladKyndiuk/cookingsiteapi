@@ -31,15 +31,6 @@ class personController {
 
 
 
-//   async updatePerson(req, res) {
-//     const { id, login, name, surname } = req.body;
-//     const updated_person = await pool.query(
-//       "update person set person_login= $2 , person_name= $3 ,person_surname= $4 where person_id = $1",
-//       [id, login, name, surname]
-//     );
-//     res.json(`USER ${id} UPDATED`);
-//   }
-
   async getAllPersons(req, res) {
     const users = await pool.query("select * from users");
     res.json(users.rows);
