@@ -35,13 +35,13 @@ class personController {
     const users = await pool.query("select * from users");
     res.json(users.rows);
   }
+
   async getUserInfo(req, res) {
-    const {id} = req.body;
-    const user = await pool.query("select * from users where id = $1", [
-      id
+    const {email} = req.body;
+    const user = await pool.query("select * from users where email = $1", [
+      email
     ]);
-
-
+    res.json(user.rows[0]);
   }
 
   async authorize(req, res) {
