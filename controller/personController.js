@@ -36,6 +36,14 @@ class personController {
     res.json(users.rows);
   }
 
+  async getUserInfo(req, res) {
+    const {email} = req.body;
+    const user = await pool.query("select * from users where email = $1", [
+      email
+    ]);
+    res.json(user.rows[0]);
+  }
+
   async authorize(req, res) {
     const {email,password} = req.body;
     const user = await pool.query("select * from users where email = $1", [
@@ -59,11 +67,10 @@ class personController {
 
     return res.status(200).json({token});
   }
-//   async deletePerson(req, res) {
-//     const id = req.params.id;
-//     const deletedPerson = await pool.query("delete from person where person_id=$1",[id]);
-//     res.json(`USER ${id} DELETED`);
-//   }
+
+
+  
+
 }
 
 module.exports = new personController();
